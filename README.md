@@ -93,6 +93,12 @@ pip install -r requirements.txt
   sudo pacman -S tk
   ```
 
+- Comando para rodar o projeto:
+  
+  ```bash
+  python3 src/main.py
+  ```
+
 ## Contribuindo
 1. Faça um fork do projeto;
 2. Crie uma branch (`git checkout -b minha-feature`);

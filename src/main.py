@@ -25,10 +25,9 @@ def run_process():
   
   try:
     header = int(entry_header.get())
-    nrows = int(entry_nrows.get())
 
     # Carrega a planilha
-    df = load_excel(file_path, header=header, nrows=nrows)
+    df = load_excel(file_path, header=header)
     # Renomeia o cabeçalho
     df = rename_headers(df)
     # Corrije os dados errados
@@ -58,7 +57,7 @@ def run_process():
     messagebox.showerror('Erro', str(e))
 
 def main():
-  global entry, entry_header, entry_nrows
+  global entry, entry_header
 
   # Janela da aplicação
   root = tk.Tk()
@@ -100,24 +99,6 @@ def main():
   entry_header.delete(0, tk.END)
   entry_header.insert(0, "17")
   entry_header.pack(side=tk.LEFT, padx=10)
-
-  # Opção de quantidade de dados
-  frame_nrows = tk.Frame(root)
-  frame_nrows.pack(pady=10)
-  frame_nrows.configure(bg='#E9E9E9')
-  tk.Label(frame_nrows,
-           text="Quantidade de dados:",
-           font=('Arial', 12),
-           bg='#E9E9E9').pack(side=tk.LEFT, padx=10)
-  entry_nrows = tk.Spinbox(frame_nrows,
-                           from_=1,
-                           to=1000,
-                           width=50,
-                           font=('Arial', 12),
-                           justify='center')
-  entry_nrows.delete(0, tk.END)
-  entry_nrows.insert(0, "15")
-  entry_nrows.pack(side=tk.LEFT, padx=10)
 
   # Botão para rodar aplicação
   btn_run = tk.Button(

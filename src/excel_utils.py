@@ -2,7 +2,8 @@ import pandas as pd
 import os
 
 def filter_datas(df: pd.DataFrame) -> pd.DataFrame:
-  return df[['Óxidos', '%', 'Elementos', '%%']]
+  intensity = 'Int. cps/uA' if 'Int. cps/uA' in df.columns else '%%'
+  return df[['Óxidos', '%', 'Elementos', intensity]]
 
 def save_to_excel(datas_filter: pd.DataFrame,
                   path: str,

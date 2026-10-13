@@ -2,15 +2,15 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 import os
 
-from data_loader import load_excel
+from data_loader import load_file
 from data_cleaner import rename_headers, correction_datas
 from excel_utils import filter_datas, save_to_excel
 from excel_formatter import format_excel
 
 def select_file():
   file_path = filedialog.askopenfilename(
-    title='Selecione uma planilha Excel',
-    filetypes=[('Planilhas Excel', '*.xls *.xlsx')]
+    title='Selecione uma planilha',
+    filetypes=[('Planilhas', '*.csv *.xls *.xlsx')]
   )
   if file_path:
     entry.delete(0, tk.END)
@@ -27,7 +27,7 @@ def run_process():
     header = int(entry_header.get())
 
     # Carrega a planilha
-    df = load_excel(file_path, header=header)
+    df = load_file(file_path, header=header)
     # Renomeia o cabeçalho
     df = rename_headers(df)
     # Corrije os dados errados
